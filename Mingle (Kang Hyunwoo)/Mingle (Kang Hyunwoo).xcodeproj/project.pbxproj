@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5328AF0A287E9B23008A3C86 /* SchoolNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328AF09287E9B23008A3C86 /* SchoolNameViewController.swift */; };
+		5328AF0E287EB0C5008A3C86 /* SchoolNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328AF0D287EB0C5008A3C86 /* SchoolNameTableViewCell.swift */; };
 		535E31DC287E98BA0033A102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31DB287E98BA0033A102 /* AppDelegate.swift */; };
 		535E31DE287E98BA0033A102 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31DD287E98BA0033A102 /* SceneDelegate.swift */; };
 		535E31E0287E98BA0033A102 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31DF287E98BA0033A102 /* ViewController.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5328AF09287E9B23008A3C86 /* SchoolNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolNameViewController.swift; sourceTree = "<group>"; };
+		5328AF0D287EB0C5008A3C86 /* SchoolNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolNameTableViewCell.swift; sourceTree = "<group>"; };
 		535E31D8287E98BA0033A102 /* Mingle (Kang Hyunwoo).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mingle (Kang Hyunwoo).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		535E31DB287E98BA0033A102 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		535E31DD287E98BA0033A102 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -47,6 +51,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5328AF0B287EB050008A3C86 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				535E31F6287E996F0033A102 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5328AF0C287EB05C008A3C86 /* SchoolName */ = {
+			isa = PBXGroup;
+			children = (
+				5328AF09287E9B23008A3C86 /* SchoolNameViewController.swift */,
+				5328AF0D287EB0C5008A3C86 /* SchoolNameTableViewCell.swift */,
+			);
+			path = SchoolName;
+			sourceTree = "<group>";
+		};
 		535E31CF287E98BA0033A102 = {
 			isa = PBXGroup;
 			children = (
@@ -68,9 +89,9 @@
 			children = (
 				535E31F4287E993B0033A102 /* Default */,
 				535E31EF287E99250033A102 /* Fonts */,
+				5328AF0B287EB050008A3C86 /* Login */,
+				5328AF0C287EB05C008A3C86 /* SchoolName */,
 				535E31F5287E99460033A102 /* Storyboard */,
-				535E31DF287E98BA0033A102 /* ViewController.swift */,
-				535E31F6287E996F0033A102 /* LoginViewController.swift */,
 				535E31FD287E99CD0033A102 /* InsetTextField.swift */,
 				535E31FE287E99CD0033A102 /* UIColor+Extension.swift */,
 				535E31E4287E98BB0033A102 /* Assets.xcassets */,
@@ -93,6 +114,7 @@
 			children = (
 				535E31DB287E98BA0033A102 /* AppDelegate.swift */,
 				535E31DD287E98BA0033A102 /* SceneDelegate.swift */,
+				535E31DF287E98BA0033A102 /* ViewController.swift */,
 			);
 			path = Default;
 			sourceTree = "<group>";
@@ -183,8 +205,10 @@
 				535E31FF287E9A160033A102 /* InsetTextField.swift in Sources */,
 				535E31E0287E98BA0033A102 /* ViewController.swift in Sources */,
 				535E3200287E9A1C0033A102 /* UIColor+Extension.swift in Sources */,
+				5328AF0E287EB0C5008A3C86 /* SchoolNameTableViewCell.swift in Sources */,
 				535E31DC287E98BA0033A102 /* AppDelegate.swift in Sources */,
 				535E31DE287E98BA0033A102 /* SceneDelegate.swift in Sources */,
+				5328AF0A287E9B23008A3C86 /* SchoolNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
