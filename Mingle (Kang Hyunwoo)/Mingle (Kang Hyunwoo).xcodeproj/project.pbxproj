@@ -13,6 +13,11 @@
 		535E31E3287E98BA0033A102 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 535E31E1287E98BA0033A102 /* Main.storyboard */; };
 		535E31E5287E98BB0033A102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535E31E4287E98BB0033A102 /* Assets.xcassets */; };
 		535E31E8287E98BB0033A102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 535E31E6287E98BB0033A102 /* LaunchScreen.storyboard */; };
+		535E31F2287E99250033A102 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 535E31F0287E99250033A102 /* Pretendard-Regular.otf */; };
+		535E31F3287E99250033A102 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 535E31F1287E99250033A102 /* PretendardVariable.ttf */; };
+		535E31F7287E996F0033A102 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31F6287E996F0033A102 /* LoginViewController.swift */; };
+		535E31FF287E9A160033A102 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31FD287E99CD0033A102 /* InsetTextField.swift */; };
+		535E3200287E9A1C0033A102 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31FE287E99CD0033A102 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		535E31E4287E98BB0033A102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		535E31E7287E98BB0033A102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		535E31E9287E98BB0033A102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		535E31F0287E99250033A102 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		535E31F1287E99250033A102 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
+		535E31F6287E996F0033A102 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		535E31FD287E99CD0033A102 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
+		535E31FE287E99CD0033A102 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,44 @@
 		535E31DA287E98BA0033A102 /* Mingle (Kang Hyunwoo) */ = {
 			isa = PBXGroup;
 			children = (
-				535E31DB287E98BA0033A102 /* AppDelegate.swift */,
-				535E31DD287E98BA0033A102 /* SceneDelegate.swift */,
+				535E31F4287E993B0033A102 /* Default */,
+				535E31EF287E99250033A102 /* Fonts */,
+				535E31F5287E99460033A102 /* Storyboard */,
 				535E31DF287E98BA0033A102 /* ViewController.swift */,
-				535E31E1287E98BA0033A102 /* Main.storyboard */,
+				535E31F6287E996F0033A102 /* LoginViewController.swift */,
+				535E31FD287E99CD0033A102 /* InsetTextField.swift */,
+				535E31FE287E99CD0033A102 /* UIColor+Extension.swift */,
 				535E31E4287E98BB0033A102 /* Assets.xcassets */,
-				535E31E6287E98BB0033A102 /* LaunchScreen.storyboard */,
 				535E31E9287E98BB0033A102 /* Info.plist */,
 			);
 			path = "Mingle (Kang Hyunwoo)";
+			sourceTree = "<group>";
+		};
+		535E31EF287E99250033A102 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				535E31F0287E99250033A102 /* Pretendard-Regular.otf */,
+				535E31F1287E99250033A102 /* PretendardVariable.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		535E31F4287E993B0033A102 /* Default */ = {
+			isa = PBXGroup;
+			children = (
+				535E31DB287E98BA0033A102 /* AppDelegate.swift */,
+				535E31DD287E98BA0033A102 /* SceneDelegate.swift */,
+			);
+			path = Default;
+			sourceTree = "<group>";
+		};
+		535E31F5287E99460033A102 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				535E31E1287E98BA0033A102 /* Main.storyboard */,
+				535E31E6287E98BB0033A102 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,7 +164,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535E31F3287E99250033A102 /* PretendardVariable.ttf in Resources */,
 				535E31E8287E98BB0033A102 /* LaunchScreen.storyboard in Resources */,
+				535E31F2287E99250033A102 /* Pretendard-Regular.otf in Resources */,
 				535E31E5287E98BB0033A102 /* Assets.xcassets in Resources */,
 				535E31E3287E98BA0033A102 /* Main.storyboard in Resources */,
 			);
@@ -138,7 +179,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535E31F7287E996F0033A102 /* LoginViewController.swift in Sources */,
+				535E31FF287E9A160033A102 /* InsetTextField.swift in Sources */,
 				535E31E0287E98BA0033A102 /* ViewController.swift in Sources */,
+				535E3200287E9A1C0033A102 /* UIColor+Extension.swift in Sources */,
 				535E31DC287E98BA0033A102 /* AppDelegate.swift in Sources */,
 				535E31DE287E98BA0033A102 /* SceneDelegate.swift in Sources */,
 			);
