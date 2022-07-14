@@ -50,17 +50,21 @@ class SchoolNameViewController: UIViewController {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1).cgColor
         button.clipsToBounds = true
-        // 버튼의 텍스트
-        button.setTitle("학교선택", for: .normal)
-        button.titleLabel?.font = UIFont(name: "PretendardVariable-Regular", size: 14)
-        button.setTitleColor(UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1), for: .normal)
-        // 버튼의 이미지
-        button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-        button.imageView?.contentMode = .scaleAspectFit
-        button.imageView?.tintColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
-        button.semanticContentAttribute = .forceRightToLeft
+        
+//        // 버튼의 텍스트
+//        button.setTitle("학교 선택", for: .normal)
+//        button.titleLabel?.font = UIFont(name: "PretendardVariable-Regular", size: 14)
+//        button.setTitleColor(UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1), for: .normal)
+//        // 버튼의 이미지
+//        button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+//        button.imageView?.contentMode = .scaleAspectFit
+//        button.imageView?.tintColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
+//        button.semanticContentAttribute = .forceRightToLeft
+        
         return button
     }()
+    
+    private let schoolSelectionView = SchoolSelectionView()
     
     private let nextButton: UIButton = {
         let button = UIButton()
@@ -90,15 +94,18 @@ class SchoolNameViewController: UIViewController {
         self.view.backgroundColor = .white
         
         // Dropdown list (Table View)
+        self.tableView.isHidden = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.schoolSelectionView.translatesAutoresizingMaskIntoConstraints = false
         
         // Adding Subviews
         self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.descriptionLabel)
         self.view.addSubview(self.schoolImage)
         self.view.addSubview(self.schoolButton)
+        self.view.addSubview(self.schoolSelectionView)
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.nextButton)
         
@@ -122,6 +129,10 @@ class SchoolNameViewController: UIViewController {
             self.schoolButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             self.schoolButton.topAnchor.constraint(equalTo: schoolImage.bottomAnchor, constant: 36),
             
+            self.schoolSelectionView.centerYAnchor.constraint(equalTo: schoolButton.centerYAnchor),
+            self.schoolSelectionView.leadingAnchor.constraint(equalTo: schoolButton.leadingAnchor, constant: 12),
+            self.schoolSelectionView.trailingAnchor.constraint(equalTo: schoolButton.trailingAnchor, constant: -15),
+            
             self.tableView.topAnchor.constraint(equalTo: schoolButton.bottomAnchor, constant: -3),
             self.tableView.leadingAnchor.constraint(equalTo: schoolButton.leadingAnchor),
             self.tableView.trailingAnchor
@@ -137,6 +148,12 @@ class SchoolNameViewController: UIViewController {
         self.tableView.reloadData()
         self.tableView.separatorStyle = .none
         self.tableView.layoutIfNeeded()
+        
+        // MARK: Add Target
+        self.schoolButton.addTarget(self, action: #selector(onPressSchoolButton), for: .touchUpInside)
+        // UIStackView는 버튼이 아니기에 탭 제스쳐 적용
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onPressSchoolButton))
+        self.schoolSelectionView.addGestureRecognizer(tapGesture)
     }
     
     // MARK: 화면전환
@@ -144,6 +161,22 @@ class SchoolNameViewController: UIViewController {
 //        let emailVC = EmailViewController()
 //        self.navigationController?.pushViewController(emailVC, animated: true)
 //    }
+    
+    // MARK: 대학선택 리스트 표시/감추기 + 버튼 색상 변경
+    @objc func onPressSchoolButton(sender: Any) {
+        if tableView.isHidden {
+            self.tableView.isHidden = false
+            schoolButton.backgroundColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+            schoolSelectionView.schoolLabel.textColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
+            schoolSelectionView.arrowImage.image = UIImage(systemName: "chevron.up")
+        }
+        else {
+            self.tableView.isHidden = true
+            schoolButton.backgroundColor = UIColor.white
+            schoolSelectionView.schoolLabel.textColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+            schoolSelectionView.arrowImage.image = UIImage(systemName: "chevron.down")
+        }
+    }
 }
 
 extension SchoolNameViewController: UITableViewDelegate, UITableViewDataSource {

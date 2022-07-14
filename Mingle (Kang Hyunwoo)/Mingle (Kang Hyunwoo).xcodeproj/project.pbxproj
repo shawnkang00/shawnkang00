@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5307ED7D287FBEA800068634 /* SchoolSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5307ED7C287FBEA800068634 /* SchoolSelectionView.swift */; };
 		5328AF0A287E9B23008A3C86 /* SchoolNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328AF09287E9B23008A3C86 /* SchoolNameViewController.swift */; };
 		5328AF0E287EB0C5008A3C86 /* SchoolNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328AF0D287EB0C5008A3C86 /* SchoolNameTableViewCell.swift */; };
 		535E31DC287E98BA0033A102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31DB287E98BA0033A102 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5307ED7C287FBEA800068634 /* SchoolSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSelectionView.swift; sourceTree = "<group>"; };
 		5328AF09287E9B23008A3C86 /* SchoolNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolNameViewController.swift; sourceTree = "<group>"; };
 		5328AF0D287EB0C5008A3C86 /* SchoolNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolNameTableViewCell.swift; sourceTree = "<group>"; };
 		535E31D8287E98BA0033A102 /* Mingle (Kang Hyunwoo).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mingle (Kang Hyunwoo).app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -64,6 +66,7 @@
 			children = (
 				5328AF09287E9B23008A3C86 /* SchoolNameViewController.swift */,
 				5328AF0D287EB0C5008A3C86 /* SchoolNameTableViewCell.swift */,
+				5307ED7C287FBEA800068634 /* SchoolSelectionView.swift */,
 			);
 			path = SchoolName;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				535E31F7287E996F0033A102 /* LoginViewController.swift in Sources */,
+				5307ED7D287FBEA800068634 /* SchoolSelectionView.swift in Sources */,
 				535E31FF287E9A160033A102 /* InsetTextField.swift in Sources */,
 				535E31E0287E98BA0033A102 /* ViewController.swift in Sources */,
 				535E3200287E9A1C0033A102 /* UIColor+Extension.swift in Sources */,
