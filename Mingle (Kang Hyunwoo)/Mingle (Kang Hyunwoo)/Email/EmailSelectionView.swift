@@ -1,21 +1,21 @@
 //
-//  SchoolSelectionView.swift
+//  EmailSelectionView.swift
 //  Mingle (Kang Hyunwoo)
 //
-//  Created by 강현우 on 2022/07/14.
+//  Created by 강현우 on 2022/07/15.
 //
 
 import UIKit
 
-class SchoolSelectionView: UIStackView {
+class EmailSelectionView: UIStackView {
 
-    let schoolLabel: UILabel = {
+    let selectionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
         label.font = UIFont(name: "PretendardVariable-Regular", size: 14)
         label.numberOfLines = 1
-        label.text = "학교 선택"
+        label.text = "선택"
         return label
     }()
     
@@ -30,13 +30,14 @@ class SchoolSelectionView: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.spacing = 6
         self.axis = .horizontal
-        self.addArrangedSubview(self.schoolLabel)
+        self.addArrangedSubview(self.selectionLabel)
         self.addArrangedSubview(self.arrowImage)
         
         // Constraints
         NSLayoutConstraint.activate([
-            self.schoolLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.selectionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.arrowImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
         

@@ -51,7 +51,7 @@ class EmailViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.layer.borderWidth = 1
-        tableView.register(SchoolInfoTableViewCell.self, forCellReuseIdentifier: "SchoolInfoTableViewCell")
+        tableView.register(EmailTableViewCell.self, forCellReuseIdentifier: "EmailTableViewCell")
         return tableView
     }()
     
@@ -145,13 +145,18 @@ extension EmailViewController: UITableViewDelegate, UITableViewDataSource {
         return emailList.count
     }
     
+    // 셀의 크기 (높이)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 32
+    }
+    
     // 셀의 내용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SchoolInfoTableViewCell", for: indexPath) as? SchoolInfoTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EmailTableViewCell", for: indexPath) as? EmailTableViewCell
         else { return UITableViewCell() }
         
         let data = emailList[indexPath.item]
-        cell.setData(text: data)
+        cell.setEmailData(text: data)
         return cell
     }
     

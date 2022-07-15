@@ -166,7 +166,12 @@ class SchoolInfoViewController: UIViewController {
         else {
             self.tableView.isHidden = true
             schoolButton.backgroundColor = UIColor.white
-            schoolSelectionView.schoolLabel.textColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+            if schoolSelectionView.schoolLabel.text == "학교 선택" {
+                schoolSelectionView.schoolLabel.textColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+            }
+            else {
+                schoolSelectionView.schoolLabel.textColor = .black
+            }
             schoolSelectionView.arrowImage.image = UIImage(systemName: "chevron.down")
         }
     }
@@ -176,6 +181,11 @@ extension SchoolInfoViewController: UITableViewDelegate, UITableViewDataSource {
     // 셀의 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schoolList.count
+    }
+    
+    // 셀의 크기 (높이)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 32
     }
     
     // 셀의 내용
