@@ -1,8 +1,15 @@
+//
+//  SchoolInfoViewController.swift
+//  mingle
+//
+//  Created by 강현우 on 2022/07/14.
+//
+
 import UIKit
 
-class SchoolNameViewController: UIViewController {
+class SchoolInfoViewController: UIViewController {
     
-    private let schoolList = [
+    private let schoolList: [String] = [
         "홍콩대학교",
         "과학기술대학교",
         "중문대학교",
@@ -43,24 +50,12 @@ class SchoolNameViewController: UIViewController {
     
     private let schoolButton: UIButton = {
         let button = UIButton()
-        // 버튼의 기타 속성
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = 4
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1).cgColor
         button.clipsToBounds = true
-        
-//        // 버튼의 텍스트
-//        button.setTitle("학교 선택", for: .normal)
-//        button.titleLabel?.font = UIFont(name: "PretendardVariable-Regular", size: 14)
-//        button.setTitleColor(UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1), for: .normal)
-//        // 버튼의 이미지
-//        button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
-//        button.imageView?.contentMode = .scaleAspectFit
-//        button.imageView?.tintColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
-//        button.semanticContentAttribute = .forceRightToLeft
-        
         return button
     }()
     
@@ -81,7 +76,7 @@ class SchoolNameViewController: UIViewController {
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.layer.borderWidth = 1
-        tableView.register(SchoolNameTableViewCell.self, forCellReuseIdentifier: "SchoolNameTableViewCell")
+        tableView.register(SchoolInfoTableViewCell.self, forCellReuseIdentifier: "SchoolInfoTableViewCell")
         return tableView
     }()
 
@@ -179,18 +174,27 @@ class SchoolNameViewController: UIViewController {
     }
 }
 
-extension SchoolNameViewController: UITableViewDelegate, UITableViewDataSource {
+extension SchoolInfoViewController: UITableViewDelegate, UITableViewDataSource {
+    // 셀의 갯수
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return schoolList.count
     }
     
+    // 셀의 내용
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SchoolNameTableViewCell", for: indexPath) as? SchoolNameTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SchoolInfoTableViewCell", for: indexPath) as? SchoolInfoTableViewCell
         else { return UITableViewCell() }
         
-        cell.setData(text: schoolList[indexPath.item])
+        let data = schoolList[indexPath.item]
+        cell.setData(text: data)
         return cell
     }
     
-    
+    // 셀 선택시 (대학선택시) 버튼 이름 변경
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = schoolList[indexPath.item]
+        schoolSelectionView.schoolLabel.text = data
+        onPressSchoolButton(sender: self)
+        schoolSelectionView.schoolLabel.textColor = .black
+    }
 }

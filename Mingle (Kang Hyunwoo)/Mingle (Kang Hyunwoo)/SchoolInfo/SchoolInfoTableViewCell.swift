@@ -1,5 +1,5 @@
 //
-//  SchoolNameTableViewCell.swift
+//  SchoolInfoTableViewCell.swift
 //  Mingle (Kang Hyunwoo)
 //
 //  Created by 강현우 on 2022/07/13.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class SchoolNameTableViewCell: UITableViewCell {
+class SchoolInfoTableViewCell: UITableViewCell {
+    
     public let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "PretendardVariable-Regular", size: 14)
         label.textColor = .black
         label.textAlignment = .left
-        label.text = "홍콩대학교"
         label.numberOfLines = 1
         return label
     }()
