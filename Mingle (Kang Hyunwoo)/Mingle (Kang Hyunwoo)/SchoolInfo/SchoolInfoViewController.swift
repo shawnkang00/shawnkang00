@@ -61,6 +61,13 @@ class SchoolInfoViewController: UIViewController {
     
     private let schoolSelectionView = SchoolSelectionView()
     
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.layer.borderWidth = 1
+        tableView.register(SchoolInfoTableViewCell.self, forCellReuseIdentifier: "SchoolInfoTableViewCell")
+        return tableView
+    }()
+    
     private let nextButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -72,14 +79,6 @@ class SchoolInfoViewController: UIViewController {
         button.clipsToBounds = true
         return button
     }()
-    
-    private let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.layer.borderWidth = 1
-        tableView.register(SchoolInfoTableViewCell.self, forCellReuseIdentifier: "SchoolInfoTableViewCell")
-        return tableView
-    }()
-
     
     // MARK: Override
     override func viewDidLoad() {
@@ -106,10 +105,9 @@ class SchoolInfoViewController: UIViewController {
         
         // Constraints
         NSLayoutConstraint.activate([
-            self.titleLabel.heightAnchor.constraint(equalToConstant: 58),
+            self.titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 144),
             self.titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             self.titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -181),
-            self.titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 144),
             
             self.descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 33),
@@ -128,16 +126,16 @@ class SchoolInfoViewController: UIViewController {
             self.schoolSelectionView.leadingAnchor.constraint(equalTo: schoolButton.leadingAnchor, constant: 12),
             self.schoolSelectionView.trailingAnchor.constraint(equalTo: schoolButton.trailingAnchor, constant: -15),
             
-            self.tableView.topAnchor.constraint(equalTo: schoolButton.bottomAnchor, constant: -3),
+            self.tableView.topAnchor.constraint(equalTo: schoolButton.bottomAnchor, constant: -4),
             self.tableView.leadingAnchor.constraint(equalTo: schoolButton.leadingAnchor),
             self.tableView.trailingAnchor
                 .constraint(equalTo: schoolButton.trailingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: nextButton.topAnchor, constant: -70),
+            self.tableView.heightAnchor.constraint(equalToConstant: 176),
             
             self.nextButton.heightAnchor.constraint(equalToConstant: 48),
             self.nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
             self.nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            self.nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -88)
+            self.nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -74)
         ])
         
         self.tableView.reloadData()

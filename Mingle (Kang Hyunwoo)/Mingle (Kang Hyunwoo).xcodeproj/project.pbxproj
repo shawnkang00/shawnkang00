@@ -21,6 +21,7 @@
 		535E31F7287E996F0033A102 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31F6287E996F0033A102 /* LoginViewController.swift */; };
 		535E31FF287E9A160033A102 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31FD287E99CD0033A102 /* InsetTextField.swift */; };
 		535E3200287E9A1C0033A102 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31FE287E99CD0033A102 /* UIColor+Extension.swift */; };
+		537F2525288117D100A72C18 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537F2524288117D100A72C18 /* EmailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		535E31F6287E996F0033A102 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		535E31FD287E99CD0033A102 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
 		535E31FE287E99CD0033A102 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		537F2524288117D100A72C18 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				535E31F4287E993B0033A102 /* Default */,
 				535E31EF287E99250033A102 /* Fonts */,
 				5328AF0B287EB050008A3C86 /* Login */,
+				537F25232881152400A72C18 /* Email */,
 				5328AF0C287EB05C008A3C86 /* SchoolInfo */,
 				535E31F5287E99460033A102 /* Storyboard */,
 				535E31FD287E99CD0033A102 /* InsetTextField.swift */,
@@ -129,6 +132,14 @@
 				535E31E6287E98BB0033A102 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		537F25232881152400A72C18 /* Email */ = {
+			isa = PBXGroup;
+			children = (
+				537F2524288117D100A72C18 /* EmailViewController.swift */,
+			);
+			path = Email;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +224,7 @@
 				535E31DC287E98BA0033A102 /* AppDelegate.swift in Sources */,
 				535E31DE287E98BA0033A102 /* SceneDelegate.swift in Sources */,
 				5328AF0A287E9B23008A3C86 /* SchoolInfoViewController.swift in Sources */,
+				537F2525288117D100A72C18 /* EmailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
