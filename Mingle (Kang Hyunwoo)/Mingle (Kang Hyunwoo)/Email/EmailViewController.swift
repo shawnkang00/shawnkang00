@@ -46,7 +46,7 @@ class EmailViewController: UIViewController {
         return button
     }()
     
-//    private let schoolSelectionView = SchoolSelectionView()
+    private let emailSelectionView = EmailSelectionView()
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -79,12 +79,13 @@ class EmailViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
-//        self.schoolSelectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.emailSelectionView.translatesAutoresizingMaskIntoConstraints = false
         
         // Adding Subviews
         self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.descriptionLabel)
         self.view.addSubview(self.emailButton)
+        self.view.addSubview(self.emailSelectionView)
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.receiveButton)
         
@@ -101,6 +102,10 @@ class EmailViewController: UIViewController {
             self.emailButton.heightAnchor.constraint(equalToConstant: 44),
             self.emailButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             self.emailButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 64),
+            
+            self.emailSelectionView.centerYAnchor.constraint(equalTo: emailButton.centerYAnchor),
+            self.emailSelectionView.leadingAnchor.constraint(equalTo: emailButton.leadingAnchor, constant: 12),
+            self.emailSelectionView.trailingAnchor.constraint(equalTo: emailButton.trailingAnchor, constant: -15),
             
             self.tableView.topAnchor.constraint(equalTo: emailButton.bottomAnchor, constant: -1),
             self.tableView.leadingAnchor.constraint(equalTo: emailButton.leadingAnchor),
@@ -120,21 +125,35 @@ class EmailViewController: UIViewController {
         
         // MARK: Add Target
         self.emailButton.addTarget(self, action: #selector(onPressEmailButton), for: .touchUpInside)
+        // UIStackView는 버튼이 아니기에 탭 제스쳐 적용
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onPressEmailButton))
+        self.emailSelectionView.addGestureRecognizer(tapGesture)
     }
+    
+    // MARK: 화면전환
+//    @objc func onPressNextButton(sender: Any) {
+//        let emailVC = EmailViewController()
+//        self.navigationController?.pushViewController(emailVC, animated: true)
+//    }
     
     // MARK: 이메일선택 리스트 표시/감추기 + 버튼 색상 변경
     @objc func onPressEmailButton(sender: Any) {
         if tableView.isHidden {
             self.tableView.isHidden = false
             emailButton.backgroundColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
-//            schoolSelectionView.schoolLabel.textColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
-//            schoolSelectionView.arrowImage.image = UIImage(systemName: "chevron.up")
+            emailSelectionView.selectionLabel.textColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
+            emailSelectionView.arrowImage.image = UIImage(systemName: "chevron.up")
         }
         else {
             self.tableView.isHidden = true
             emailButton.backgroundColor = UIColor.white
-//            schoolSelectionView.schoolLabel.textColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
-//            schoolSelectionView.arrowImage.image = UIImage(systemName: "chevron.down")
+            if emailSelectionView.selectionLabel.text == "선택" {
+                emailSelectionView.selectionLabel.textColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+            }
+            else {
+                emailSelectionView.selectionLabel.textColor = .black
+            }
+            emailSelectionView.arrowImage.image = UIImage(systemName: "chevron.down")
         }
     }
 }
@@ -161,10 +180,10 @@ extension EmailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     // 셀 선택시 (대학선택시) 버튼 이름 변경
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let data = emailList[indexPath.item]
-//        schoolSelectionView.schoolLabel.text = data
-//        onPressSchoolButton(sender: self)
-//        schoolSelectionView.schoolLabel.textColor = .black
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = emailList[indexPath.item]
+        emailSelectionView.selectionLabel.text = data
+        onPressEmailButton(sender: self)
+        emailSelectionView.selectionLabel.textColor = .black
+    }
 }

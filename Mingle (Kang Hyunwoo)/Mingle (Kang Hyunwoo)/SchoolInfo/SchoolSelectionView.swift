@@ -38,6 +38,7 @@ class SchoolSelectionView: UIStackView {
         NSLayoutConstraint.activate([
             self.schoolLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.arrowImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.arrowImage.widthAnchor.constraint(equalToConstant: 15)
         ])
         
     }

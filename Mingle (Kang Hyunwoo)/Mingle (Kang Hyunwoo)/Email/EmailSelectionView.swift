@@ -30,7 +30,6 @@ class EmailSelectionView: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.spacing = 6
         self.axis = .horizontal
         self.addArrangedSubview(self.selectionLabel)
         self.addArrangedSubview(self.arrowImage)
@@ -39,6 +38,7 @@ class EmailSelectionView: UIStackView {
         NSLayoutConstraint.activate([
             self.selectionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.arrowImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.arrowImage.widthAnchor.constraint(equalToConstant: 15)
         ])
         
     }
