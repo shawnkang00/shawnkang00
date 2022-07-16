@@ -26,13 +26,12 @@ class SchoolInfoTableViewCell: UITableViewCell {
         self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.nameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 7),
+            self.nameLabel.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
             self.nameLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 12),
-            self.nameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -8),
         ])
     }
     
-    func setData(text: String) {
+    func setSchoolData(text: String) {
         self.nameLabel.text = text
     }
     

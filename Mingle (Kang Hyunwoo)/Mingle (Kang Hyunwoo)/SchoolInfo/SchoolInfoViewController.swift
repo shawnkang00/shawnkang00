@@ -41,9 +41,7 @@ class SchoolInfoViewController: UIViewController {
     private let schoolImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "building.2")
-        imageView.backgroundColor = .white
-        imageView.tintColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+        imageView.image = UIImage(named: "signup-school")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -94,6 +92,13 @@ class SchoolInfoViewController: UIViewController {
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.schoolSelectionView.translatesAutoresizingMaskIntoConstraints = false
         
+        // 셀 갯수 (학교 갯수)에 따라 리스트 높이 설정
+        var viewHeight = (schoolList.count) * 32
+        if viewHeight < 176 {
+            viewHeight = (schoolList.count) * 32
+        }
+        else { viewHeight = 176 }
+        
         // Adding Subviews
         self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.descriptionLabel)
@@ -112,15 +117,15 @@ class SchoolInfoViewController: UIViewController {
             self.descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 33),
             
-            self.schoolImage.widthAnchor.constraint(equalToConstant: 118),
-            self.schoolImage.heightAnchor.constraint(equalToConstant: 74),
+            self.schoolImage.widthAnchor.constraint(equalToConstant: 130),
+            self.schoolImage.heightAnchor.constraint(equalToConstant: 120),
             self.schoolImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            self.schoolImage.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 58),
+            self.schoolImage.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 40),
             
             self.schoolButton.widthAnchor.constraint(equalToConstant: 170),
             self.schoolButton.heightAnchor.constraint(equalToConstant: 44),
             self.schoolButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            self.schoolButton.topAnchor.constraint(equalTo: schoolImage.bottomAnchor, constant: 36),
+            self.schoolButton.topAnchor.constraint(equalTo: schoolImage.bottomAnchor, constant: 8),
             
             self.schoolSelectionView.centerYAnchor.constraint(equalTo: schoolButton.centerYAnchor),
             self.schoolSelectionView.leadingAnchor.constraint(equalTo: schoolButton.leadingAnchor, constant: 12),
@@ -130,7 +135,7 @@ class SchoolInfoViewController: UIViewController {
             self.tableView.leadingAnchor.constraint(equalTo: schoolButton.leadingAnchor),
             self.tableView.trailingAnchor
                 .constraint(equalTo: schoolButton.trailingAnchor),
-            self.tableView.heightAnchor.constraint(equalToConstant: 176),
+            self.tableView.heightAnchor.constraint(equalToConstant: CGFloat(viewHeight)),
             
             self.nextButton.heightAnchor.constraint(equalToConstant: 48),
             self.nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
@@ -194,7 +199,7 @@ extension SchoolInfoViewController: UITableViewDelegate, UITableViewDataSource {
         else { return UITableViewCell() }
         
         let data = schoolList[indexPath.item]
-        cell.setData(text: data)
+        cell.setSchoolData(text: data)
         return cell
     }
     

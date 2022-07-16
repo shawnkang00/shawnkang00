@@ -46,6 +46,36 @@ class EmailViewController: UIViewController {
         return button
     }()
     
+    private let atLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .white
+        label.textColor = .black
+        label.font = UIFont(name: "PretendardVariable-Regular", size: 16)
+        label.text = "@"
+        return label
+    }()
+    
+    private let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.font = UIFont(name: "PretendardVariable-Regular", size: 14)
+        textField.textColor = UIColor.black
+        textField.backgroundColor = .white
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "학교 이메일 작성",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)]
+        )
+        return textField
+    }()
+    
+    private let underBar: UIView = {
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = UIColor(red: 1, green: 0.335, blue: 0.189, alpha: 1)
+            return view
+        }()
+    
     private let emailSelectionView = EmailSelectionView()
     
     private let tableView: UITableView = {
@@ -81,10 +111,20 @@ class EmailViewController: UIViewController {
         self.tableView.translatesAutoresizingMaskIntoConstraints = false
         self.emailSelectionView.translatesAutoresizingMaskIntoConstraints = false
         
+        // 셀 갯수 (이메일 갯수)에 따라 리스트 높이 설정
+        var viewHeight = (emailList.count) * 32
+        if viewHeight < 80 {
+            viewHeight = (emailList.count) * 32
+        }
+        else { viewHeight = 80 }
+        
         // Adding Subviews
         self.view.addSubview(self.titleLabel)
         self.view.addSubview(self.descriptionLabel)
         self.view.addSubview(self.emailButton)
+        self.view.addSubview(self.atLabel)
+        self.view.addSubview(self.emailTextField)
+        self.view.addSubview(self.underBar)
         self.view.addSubview(self.emailSelectionView)
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.receiveButton)
@@ -98,10 +138,23 @@ class EmailViewController: UIViewController {
             self.descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             self.descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 33),
             
+            self.emailTextField.centerYAnchor.constraint(equalTo: emailButton.centerYAnchor),
+            self.emailTextField.trailingAnchor.constraint(equalTo: atLabel.leadingAnchor, constant: -8),
+            self.emailTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            
+            self.atLabel.centerYAnchor.constraint(equalTo: emailButton.centerYAnchor),
+            self.atLabel.trailingAnchor.constraint(equalTo: emailButton.leadingAnchor, constant: -8),
+            
             self.emailButton.widthAnchor.constraint(equalToConstant: 144),
             self.emailButton.heightAnchor.constraint(equalToConstant: 44),
-            self.emailButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
             self.emailButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 64),
+            self.emailButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            
+            self.underBar.topAnchor.constraint(equalTo: emailTextField.bottomAnchor, constant: 12),
+            self.underBar.heightAnchor.constraint(equalToConstant: 1),
+            self.underBar.leadingAnchor.constraint(equalTo: emailTextField.leadingAnchor),
+            self.underBar.trailingAnchor
+                .constraint(equalTo: emailTextField.trailingAnchor),
             
             self.emailSelectionView.centerYAnchor.constraint(equalTo: emailButton.centerYAnchor),
             self.emailSelectionView.leadingAnchor.constraint(equalTo: emailButton.leadingAnchor, constant: 12),
@@ -111,7 +164,7 @@ class EmailViewController: UIViewController {
             self.tableView.leadingAnchor.constraint(equalTo: emailButton.leadingAnchor),
             self.tableView.trailingAnchor
                 .constraint(equalTo: emailButton.trailingAnchor),
-            self.tableView.heightAnchor.constraint(equalToConstant: 80),
+            self.tableView.heightAnchor.constraint(equalToConstant: CGFloat(viewHeight)),
             
             self.receiveButton.heightAnchor.constraint(equalToConstant: 48),
             self.receiveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
