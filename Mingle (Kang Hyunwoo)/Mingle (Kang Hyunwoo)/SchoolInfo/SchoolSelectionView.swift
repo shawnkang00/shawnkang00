@@ -40,7 +40,6 @@ class SchoolSelectionView: UIStackView {
             self.arrowImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             self.arrowImage.widthAnchor.constraint(equalToConstant: 15)
         ])
-        
     }
     
     required init(coder: NSCoder) {

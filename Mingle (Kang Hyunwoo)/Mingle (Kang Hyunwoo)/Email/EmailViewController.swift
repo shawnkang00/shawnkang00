@@ -85,6 +85,30 @@ class EmailViewController: UIViewController {
         return tableView
     }()
     
+    private let errorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .white
+        label.textColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
+        label.font = UIFont(name: "PretendardVariable-Regular", size: 14)
+        label.text = "이미 존재하는 이메일 주소입니다."
+        return label
+    }()
+    
+    private let loginButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor.white
+        
+        let textAttribute: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "PretendardVariable-Regular", size: 14),
+            .foregroundColor: UIColor(red: 1, green: 0.335, blue: 0.189, alpha: 1),
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        let addAttribute = NSMutableAttributedString(string: "로그인하기", attributes: textAttribute)
+        return button
+    }()
+    
     private let receiveButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -127,6 +151,8 @@ class EmailViewController: UIViewController {
         self.view.addSubview(self.underBar)
         self.view.addSubview(self.emailSelectionView)
         self.view.addSubview(self.tableView)
+        self.view.addSubview(self.errorLabel)
+        self.view.addSubview(self.loginButton)
         self.view.addSubview(self.receiveButton)
         
         // Constraints
@@ -165,6 +191,12 @@ class EmailViewController: UIViewController {
             self.tableView.trailingAnchor
                 .constraint(equalTo: emailButton.trailingAnchor),
             self.tableView.heightAnchor.constraint(equalToConstant: CGFloat(viewHeight)),
+            
+            self.errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 33),
+            self.errorLabel.topAnchor.constraint(equalTo: underBar.bottomAnchor, constant: 16),
+            
+            self.loginButton.centerYAnchor.constraint(equalTo: errorLabel.centerYAnchor),
+            self.loginButton.leadingAnchor.constraint(equalTo: errorLabel.trailingAnchor, constant: 16),
             
             self.receiveButton.heightAnchor.constraint(equalToConstant: 48),
             self.receiveButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
@@ -209,6 +241,18 @@ class EmailViewController: UIViewController {
             emailSelectionView.arrowImage.image = UIImage(systemName: "chevron.down")
         }
     }
+    
+    // MARK: "인증번호 받기" 클릭시 이메일 확인
+//    @objc func registerButtonDidTap(sender: Any) {
+//        // 뒤로가기
+//        self.navigationController?.popViewController(animated: true)
+//        // 인증번호 받기를 눌렀을때 데이터 전달
+//        let userInfo = UserInfo(email: self.email,
+//                                name: self.name,
+//                                nickname: self.nickname,
+//                                password: self.password)
+//        self.userInfo?(userInfo)
+//    }
 }
 
 extension EmailViewController: UITableViewDelegate, UITableViewDataSource {
