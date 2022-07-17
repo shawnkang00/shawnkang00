@@ -22,6 +22,8 @@
 		535E31FF287E9A160033A102 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31FD287E99CD0033A102 /* InsetTextField.swift */; };
 		535E3200287E9A1C0033A102 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E31FE287E99CD0033A102 /* UIColor+Extension.swift */; };
 		537F2525288117D100A72C18 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537F2524288117D100A72C18 /* EmailViewController.swift */; };
+		53DE8F352884402600896E8D /* EmailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE8F342884402600896E8D /* EmailInfo.swift */; };
+		53DE8F372884418400896E8D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DE8F362884418400896E8D /* Color+Extension.swift */; };
 		53F9FA95288176EA00E1F4E7 /* EmailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F9FA94288176EA00E1F4E7 /* EmailTableViewCell.swift */; };
 		53F9FA97288179FD00E1F4E7 /* EmailSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F9FA96288179FD00E1F4E7 /* EmailSelectionView.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +46,8 @@
 		535E31FD287E99CD0033A102 /* InsetTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetTextField.swift; sourceTree = "<group>"; };
 		535E31FE287E99CD0033A102 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		537F2524288117D100A72C18 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		53DE8F342884402600896E8D /* EmailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInfo.swift; sourceTree = "<group>"; };
+		53DE8F362884418400896E8D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		53F9FA94288176EA00E1F4E7 /* EmailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTableViewCell.swift; sourceTree = "<group>"; };
 		53F9FA96288179FD00E1F4E7 /* EmailSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +110,7 @@
 				535E31FE287E99CD0033A102 /* UIColor+Extension.swift */,
 				535E31E4287E98BB0033A102 /* Assets.xcassets */,
 				535E31E9287E98BB0033A102 /* Info.plist */,
+				53DE8F362884418400896E8D /* Color+Extension.swift */,
 			);
 			path = "Mingle (Kang Hyunwoo)";
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				537F2524288117D100A72C18 /* EmailViewController.swift */,
 				53F9FA94288176EA00E1F4E7 /* EmailTableViewCell.swift */,
 				53F9FA96288179FD00E1F4E7 /* EmailSelectionView.swift */,
+				53DE8F342884402600896E8D /* EmailInfo.swift */,
 			);
 			path = Email;
 			sourceTree = "<group>";
@@ -222,8 +228,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				53F9FA97288179FD00E1F4E7 /* EmailSelectionView.swift in Sources */,
+				53DE8F372884418400896E8D /* Color+Extension.swift in Sources */,
 				535E31F7287E996F0033A102 /* LoginViewController.swift in Sources */,
 				5307ED7D287FBEA800068634 /* SchoolSelectionView.swift in Sources */,
+				53DE8F352884402600896E8D /* EmailInfo.swift in Sources */,
 				535E31FF287E9A160033A102 /* InsetTextField.swift in Sources */,
 				535E31E0287E98BA0033A102 /* ViewController.swift in Sources */,
 				53F9FA95288176EA00E1F4E7 /* EmailTableViewCell.swift in Sources */,

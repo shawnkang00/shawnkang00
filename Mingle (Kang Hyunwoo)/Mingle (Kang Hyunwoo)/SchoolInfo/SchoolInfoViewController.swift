@@ -21,7 +21,7 @@ class SchoolInfoViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
-        label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = UIColor.black
         label.font = UIFont(name: "PretendardVariable-Regular", size: 24)
         label.numberOfLines = 0
         label.text = "재학 중인 학교가 어디신가요?"
@@ -32,7 +32,7 @@ class SchoolInfoViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
-        label.textColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
+        label.textColor = UIColor.gray3
         label.font = UIFont(name: "PretendardVariable-Regular", size: 14)
         label.text = "원활한 앱 이용을 위해 재학 정보가 필요해요."
         return label
@@ -52,7 +52,7 @@ class SchoolInfoViewController: UIViewController {
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = 4
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1).cgColor
+        button.layer.borderColor = UIColor.gray3.cgColor
         button.clipsToBounds = true
         return button
     }()
@@ -71,8 +71,8 @@ class SchoolInfoViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("다음으로", for: .normal)
         button.titleLabel?.font = UIFont(name: "PretendardVariable-Regular", size: 14)
-        button.setTitleColor(UIColor(red: 0.408, green: 0.408, blue: 0.408, alpha: 1), for: .normal)
-        button.backgroundColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+        button.setTitleColor(UIColor.gray4, for: .normal)
+        button.backgroundColor = UIColor.gray2
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         return button
@@ -164,15 +164,15 @@ class SchoolInfoViewController: UIViewController {
     @objc func onPressSchoolButton(sender: Any) {
         if tableView.isHidden {
             self.tableView.isHidden = false
-            schoolButton.backgroundColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
-            schoolSelectionView.schoolLabel.textColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
+            schoolButton.backgroundColor = UIColor.gray2
+            schoolSelectionView.schoolLabel.textColor = UIColor.gray3
             schoolSelectionView.arrowImage.image = UIImage(systemName: "chevron.up")
         }
         else {
             self.tableView.isHidden = true
             schoolButton.backgroundColor = UIColor.white
             if schoolSelectionView.schoolLabel.text == "학교 선택" {
-                schoolSelectionView.schoolLabel.textColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+                schoolSelectionView.schoolLabel.textColor = UIColor.gray2
             }
             else {
                 schoolSelectionView.schoolLabel.textColor = .black

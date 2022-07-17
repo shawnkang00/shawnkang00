@@ -13,12 +13,16 @@ class EmailViewController: UIViewController {
         "connect.hku.hk",
         "hku.hk"]
     
+    var email: String = ""
+    // 클로져로 데이터 전달
+    var emailInfo: ((EmailInfo) -> Void)?
+    
     // MARK: UI Objects
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
-        label.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        label.textColor = UIColor.black
         label.font = UIFont(name: "PretendardVariable-Regular", size: 24)
         label.numberOfLines = 0
         label.text = "학교 이메일을 입력해 주세요."
@@ -29,7 +33,7 @@ class EmailViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
-        label.textColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
+        label.textColor = UIColor.gray3
         label.font = UIFont(name: "PretendardVariable-Regular", size: 14)
         label.text = "인증번호가 발송돼요."
         return label
@@ -41,7 +45,7 @@ class EmailViewController: UIViewController {
         button.backgroundColor = UIColor.white
         button.layer.cornerRadius = 4
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1).cgColor
+        button.layer.borderColor = UIColor.gray3.cgColor
         button.clipsToBounds = true
         return button
     }()
@@ -64,7 +68,7 @@ class EmailViewController: UIViewController {
         textField.backgroundColor = .white
         textField.attributedPlaceholder = NSAttributedString(
             string: "학교 이메일 작성",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray2]
         )
         return textField
     }()
@@ -72,7 +76,7 @@ class EmailViewController: UIViewController {
     private let underBar: UIView = {
             let view = UIView()
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.backgroundColor = UIColor(red: 1, green: 0.335, blue: 0.189, alpha: 1)
+        view.backgroundColor = UIColor.primaryOrange1
             return view
         }()
     
@@ -89,7 +93,7 @@ class EmailViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
-        label.textColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
+        label.textColor = UIColor.gray3
         label.font = UIFont(name: "PretendardVariable-Regular", size: 14)
         label.text = "이미 존재하는 이메일 주소입니다."
         return label
@@ -99,13 +103,10 @@ class EmailViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = UIColor.white
+        button.setTitle("인증번호 받기", for: .normal)
+        button.titleLabel?.font = UIFont(name: "PretendardVariable-Regular", size: 14)
+        button.setTitleColor(UIColor.gray4, for: .normal)
         
-        let textAttribute: [NSAttributedString.Key: Any] = [
-            .font: UIFont(name: "PretendardVariable-Regular", size: 14),
-            .foregroundColor: UIColor(red: 1, green: 0.335, blue: 0.189, alpha: 1),
-            .underlineStyle: NSUnderlineStyle.single.rawValue
-        ]
-        let addAttribute = NSMutableAttributedString(string: "로그인하기", attributes: textAttribute)
         return button
     }()
     
@@ -114,8 +115,8 @@ class EmailViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("인증번호 받기", for: .normal)
         button.titleLabel?.font = UIFont(name: "PretendardVariable-Regular", size: 14)
-        button.setTitleColor(UIColor(red: 0.408, green: 0.408, blue: 0.408, alpha: 1), for: .normal)
-        button.backgroundColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+        button.setTitleColor(UIColor.gray4, for: .normal)
+        button.backgroundColor = UIColor.gray2
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
         return button
@@ -225,15 +226,15 @@ class EmailViewController: UIViewController {
     @objc func onPressEmailButton(sender: Any) {
         if tableView.isHidden {
             self.tableView.isHidden = false
-            emailButton.backgroundColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
-            emailSelectionView.selectionLabel.textColor = UIColor(red: 0.583, green: 0.583, blue: 0.583, alpha: 1)
+            emailButton.backgroundColor = UIColor.gray2
+            emailSelectionView.selectionLabel.textColor = UIColor.gray3
             emailSelectionView.arrowImage.image = UIImage(systemName: "chevron.up")
         }
         else {
             self.tableView.isHidden = true
             emailButton.backgroundColor = UIColor.white
             if emailSelectionView.selectionLabel.text == "선택" {
-                emailSelectionView.selectionLabel.textColor = UIColor(red: 0.812, green: 0.812, blue: 0.812, alpha: 1)
+                emailSelectionView.selectionLabel.textColor = UIColor.gray2
             }
             else {
                 emailSelectionView.selectionLabel.textColor = .black
@@ -243,16 +244,13 @@ class EmailViewController: UIViewController {
     }
     
     // MARK: "인증번호 받기" 클릭시 이메일 확인
-//    @objc func registerButtonDidTap(sender: Any) {
-//        // 뒤로가기
-//        self.navigationController?.popViewController(animated: true)
-//        // 인증번호 받기를 눌렀을때 데이터 전달
-//        let userInfo = UserInfo(email: self.email,
-//                                name: self.name,
-//                                nickname: self.nickname,
-//                                password: self.password)
-//        self.userInfo?(userInfo)
-//    }
+    @objc func registerButtonDidTap(sender: Any) {
+        // 뒤로가기
+        self.navigationController?.popViewController(animated: true)
+        // 인증번호 받기를 눌렀을때 데이터 전달
+        let emailInfo = EmailInfo(email: self.email)
+        self.emailInfo?(emailInfo)
+    }
 }
 
 extension EmailViewController: UITableViewDelegate, UITableViewDataSource {
